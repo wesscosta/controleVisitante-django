@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block conteudo%}
                     <div class="container">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -16,13 +18,14 @@
                                     <small> O asterisco (*) indica que o campo é obrigatório.</small>
                                 </p>
                     
-                                <form method="post" enctype="multipart/form-data">
+                                <form method="post">
                                     <div class="form-row">
-                                       {% csrf_token %}
-                                        {% for  field in form%}
-                                        <div class="form-group col-md-12">
-                                            <label>{{field.label}}</label>
-                                        </div>
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                            <div class="form-group col-md-12">
+                                                <label>{{field.label}} {%if field.field.required %} * {% endif %}</label>
+                                                {% render_field field placeholder=field.label class='form-control'%}
+                                            </div>
                                         {% endfor %}
                                     </div>
                     
