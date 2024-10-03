@@ -25,3 +25,12 @@ def registrar_visitante(request):
     }
     
     return render(request,'registrar_visitante.html',context)
+
+@login_required
+def informacoes_visitante(request):
+    
+    context ={
+        'nome_pagina': 'Informações Visitante',
+    }
+    
+    return render(request,'informacoes_visitante.html',context)
