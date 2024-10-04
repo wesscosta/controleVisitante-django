@@ -10,5 +10,5 @@ urlpatterns = [
     path('', index ,name='index'),
     path('login/',auth_views.LoginView.as_view(template_name = 'login.html'),name= 'login'),
     path('registrar-visitante/', registrar_visitante, name='registrar_visitante'),
-    path('informacoes-visitante/', informacoes_visitante, name='informacoes_visitante'),
+    path('visitante/<int:pk>', informacoes_visitante, name='informacoes_visitante'),
 ]

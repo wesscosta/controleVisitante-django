@@ -40,7 +40,11 @@ class Visitante(models.Model):
     def get_placa_veiculo(self):
         if self.placa_veiculo:
             return self.placa_veiculo
-    
+        
+    def get_data_nascimento(self):   
+        if self.data_nascimento:
+            return str(self.data_nascimento)
+         
     def get_cpf(self):
         if self.cpf:
             cpf = str(self.cpf)

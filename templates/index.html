@@ -110,7 +110,7 @@
                             <td>{{ visitante.get_horario_autorizacao}}</td>
                             <td>{{ visitante.get_morador_responsavel}}</td>
                             <td>
-                                <a href='{% url "informacoes_visitante" %}'>
+                                <a href='{% url "informacoes_visitante" pk=visitante.id %}'>
                                     Ver informações
                                 </a>
                             </td>
