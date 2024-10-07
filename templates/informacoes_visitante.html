@@ -6,6 +6,26 @@
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">{{ nome_pagina }}</h1>
+
+        <div>
+            {% if visitante.status == "AGUARDANDO" %}
+                <a href="#" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal" data-target="#modal1">
+                    <span class="text">Autorizar Entrada</span>
+                    <span class="icon text-white-50">
+                        <i class="fas fa-user-check"></i>
+                    </span>
+                </a>
+            {% endif%}
+
+            {% if visitante.status == "EM_VISITA" %}
+                <a href="#" class="btn btn-warning btn-icon-split btn-sm" data-toggle="modal" data-target="#modal2">
+                    <span class="text">Finalizar Entrada</span>
+                    <span class="icon text-white-50">
+                        <i class="fas fa-door-open"></i>
+                    </span>
+                </a>
+            {% endif%}
+        </div>
     </div>
     
     <div class="card shadow mb-4">        
@@ -89,4 +109,61 @@
         </div>
     </div>
 </div>
+
+  <!-- Modal autorizar visita-->
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Autorizar entrada de visitante</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="id_morador_responsavel" class="col-form-label">Nome do morador responsavel por autorizar a entrada do visistante:</label>
+
+                    {% render_field form.morador_responsavel placeholder="Nome do morador responsavel" class="form-control" %}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Autorizar entrada</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal Finalizar Visita -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Finalizar visitante</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="mb-3">Realmente deseja encerrar a visita?</h5>
+
+                    <form method="post" action="{% url 'finalizar_visita' pk=visitante.id %}">
+                        {% csrf_token %}
+                        <input hidden>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Finalizar entrada</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
 {% endblock %}
