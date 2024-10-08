@@ -45,12 +45,13 @@ INSTALLED_APPS = [
 ]
 INSTALLED_APPS += [
     'widget_tweaks',
+    'rest_framework',
 ]
 
 INSTALLED_APPS += [
     'usuarios',
     'porteiros',
-    'visitantes'
+    'visitantes',
 ]
 
 MIDDLEWARE = [
