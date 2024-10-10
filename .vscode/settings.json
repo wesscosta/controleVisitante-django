@@ -1,5 +1,8 @@
 {
     "python.analysis.extraPaths": [
         "./apps"
+    ],
+    "cSpell.words": [
+        "visitantes"
     ]
 }

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{nome_pagina}}</h1>
+
+        <a href="#" class="btn btn-primary btn-icon-split btn-sm">
+            <span class="text">Registrar Visitante</span>
+            <span class="icon text-white-50">
+                <i class="fas fa-user-plus"></i>
+            </span>
+        </a>
+
+        
+    </div>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
+            <h6 class="m-0 font-weight-bold text-primary">Moradores Recentes</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Nome completo</th>
+                        <th>CPF</th>
+                        <th>Genero</th>
+                        <th>Telefone</th>
+                        <th>Data Nascimento</th>
+                        <th>Mais informações</th>
+                    </thead>
+
+                    <tbody>
+                        {%for morador in moradores%}
+                        <tr>
+                            <td>{{ morador}}</td>
+                            <td>{{morador.get_cpf}}</td>
+                            <td>{{ morador.genero}}</td>
+                            <td>{{ morador.telefone}}</td>
+                            <td>{{ morador.get_data_nascimento}}</td>
+                            <td>
+                                <a href='{% url "informacoes_morador" pk=morador.id %}'>
+                                    Ver informações
+                                </a>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock conteudo %}

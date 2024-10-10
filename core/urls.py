@@ -5,10 +5,12 @@ from django.urls import include, path
 from dashboard.views import index
 from visitantes.views import registrar_visitante, informacoes_visitante, finalizar_visita
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
+from moradores.views import moradores
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index ,name='index'),
+    path('moradores/', moradores ,name='moradores'),
     
     path('login/', LoginView.as_view(template_name = 'login.html'), name= 'login'),
     path('logout/', LogoutView.as_view(template_name = 'logout.html'), name= 'logout' ),

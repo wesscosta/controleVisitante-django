@@ -11,6 +11,7 @@
         <title>Controle de Visitantes | Django Framework na prática</title>
         
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/83add7c582.js" crossorigin="anonymous"></script>
         
         <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">    
         <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -22,6 +23,7 @@
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-user-shield"></i>
+                        
                     </div>
                     
                     <div class="sidebar-brand-text">Controle de Visitantes</div>
@@ -31,8 +33,18 @@
                 
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}">
-                        <i class="fas fa-home"></i>
-                        <span>Início</span>
+                        <i class="fas fa-person-through-window"></i>
+
+                        <span>Visitantes</span>
+                    </a>
+                    <a class="nav-link" href="{% url 'moradores' %}">
+                        <i class="fas fa-couch"></i>
+                        <span>Moradores</span>
+                    </a>
+                    <a class="nav-link" href="{% url 'index' %}">
+                        <i class="fas fa-door-closed"></i>
+    
+                        <span>Apartamentos</span>
                     </a>
                 </li>
                 
