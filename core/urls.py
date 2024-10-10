@@ -17,7 +17,7 @@ urlpatterns = [
     path('visitante/<int:pk>', informacoes_visitante, name='informacoes_visitante'),
     path('visitante/<int:pk>/finalizar-visita', finalizar_visita, name='finalizar_visita'),
 
-    path('api/', include('api.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/', include('api.urls')),
 ]
