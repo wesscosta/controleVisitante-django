@@ -6,6 +6,7 @@ from dashboard.views import index
 from visitantes.views import registrar_visitante, informacoes_visitante, finalizar_visita
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 from moradores.views import moradores
+from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +24,5 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include('api.urls')),
 ]
+
+handler404 = 'dashboard.views.custom_404' 
