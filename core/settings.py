@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$ejos=@l-^nyvo2speb-@*))6a1-dxe6%@ja*)ib8k#5hu&+7j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',]
 
 sys.path.append(
     os.path.join(BASE_DIR,'apps')
