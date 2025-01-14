@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$ejos=@l-^nyvo2speb-@*))6a1-dxe6%@ja*)ib8k#5hu&+7j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = []
 
 sys.path.append(
     os.path.join(BASE_DIR,'apps')
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 INSTALLED_APPS += [
     'widget_tweaks',
+    
 ]
 
 INSTALLED_APPS += [
@@ -147,8 +148,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -157,3 +161,8 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except:
+    pass
